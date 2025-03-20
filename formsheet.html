@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <h1 style="color:green;">GeeksforGeeks</h1>
+    <input type="file" id="imageUpload" accept="image/*">
+    <img id="preview" src="#" alt="Image Preview" style="display:none;" />
+
+    <script>
+        document.getElementById('imageUpload').addEventListener('change', function () {
+            let file = this.files[0];
+            let reader = new FileReader();
+
+            reader.onload = function (event) {
+                let base64String = event.target.result;
+                document.getElementById('preview').src = base64String;
+                document.getElementById('preview').style.display = 'block';
+                console.log(base64String);
+            };
+
+            reader.readAsDataURL(file);
+        });
+    </script>
+</body>
+
+</html>
